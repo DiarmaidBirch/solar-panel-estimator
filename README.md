@@ -1,2 +1,35 @@
-# solar-panel-estimator
-Estimating solar panel energy ouput given a specific location
+# Solar panel estimator
+Estimating solar panel energy output given a specific coordinate in the US
+
+## Overview
+My project develops a ML model to estimate average yearly solar panel energy generation for a given location, using historical weather and solar data. It will also feature a GUI which will help the user interpret the data through estimates such as how long a solar panel will take to pay for itself economically and environmentally (payback period).
+
+## Motivation
+In the green transition ensuring that solar energy is deployed efficiently is important for both businesses and governments. Current tools typically use zip codes, instead I will be using coordinates as they allow greater freedom and may be useful in estimating solar generation in areas with no zip code. For example, a solar farm in the countryside.
+
+## Project Objectives
+* Develop a regression model capable of predicting average yearly solar panel energy generation.
+* Develop a GUI for users to interpret what the data means, such as estimating the payback period.
+* Create a database integrating diverse data to train the model including geographical coordinates, historic weather, and solar radiation data.
+* Evaluate model performance using (spatial cross-validation?) on unseen data.
+
+## Limitations
+* Data on my ground truth (solar energy generation) is easily available in the US so I will be limiting my project to there.
+* Modeling every type of solar panel is beyond the scope of the project so I will be focusing on a widely used type of solar panel with a commonly used configuration.
+* I'm not taking into account the affects of climate change on future solar energy generation.
+* Fluctuating energy prices means the payback period 
+
+## Scope
+The model will focus on estimating yearly energy generation for a solar panel installation in the US. Specifically a Monocrystalline Silicon (c-Si), Single-Axis Tracking (Horizontal Axis), ground mount, flat ground, north-south axis orientation, fixed shallow tilt, solar panel. I will also be using current US average electricity cost to estimate the payback period.
+
+## Data sources
+* OpenWeatherMap API - Historical weather data (temperature, cloud coverage etc)
+* NREL National Solar Radiation Database - Historical solar irradiance data for the US
+* Open-Meteo Elevation API - Provides elevation data
+* Reverse Geocoding APIs - Provides data on if coordinates are in the US and on land
+* NREL PVDAQ - Solar energy generation from around the US (ground truth)
+
+## Data acquisition
+
+
+## Exploratory data Analysis
