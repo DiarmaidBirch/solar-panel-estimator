@@ -2,7 +2,7 @@
 Estimating solar panel energy output given a specific coordinate in the US
 
 ## Overview
-My project develops a ML model to estimate average yearly solar panel energy generation for a given location, using historical weather and solar data. It will also feature a GUI which will help the user interpret the data through estimates such as how long a solar panel will take to pay for itself economically and environmentally (payback period).
+My project develops a ML model to estimate average yearly solar panel energy generation for a given location, using historical weather and solar data. It will also feature a GUI which will help the user interpret the data through estimates such as how long a solar panel will take to pay for itself economically and environmentally (payback period). The model will also be able to suggest the tilt to use 
 
 ## Motivation
 In the green transition ensuring that solar energy is deployed efficiently is important for both businesses and governments. Current tools typically use zip codes, instead I will be using coordinates as they allow greater freedom and may be useful in estimating solar generation in areas with no zip code. For example, a solar farm in the countryside.
@@ -17,10 +17,10 @@ In the green transition ensuring that solar energy is deployed efficiently is im
 * Data on my ground truth (solar energy generation) is easily available in the US so I will be limiting my project to there.
 * Modeling every type of solar panel is beyond the scope of the project so I will be focusing on a widely used type of solar panel with a commonly used configuration.
 * I'm not taking into account the affects of climate change on future solar energy generation.
-* Fluctuating energy prices means the payback period 
+* Fluctuating energy prices means the payback period may fluctuate.
 
 ## Scope
-The model will focus on estimating yearly energy generation for a solar panel installation in the US. Specifically a Monocrystalline Silicon (c-Si), Single-Axis Tracking (Horizontal Axis), ground mount, flat ground, north-south axis orientation, fixed shallow tilt, solar panel. I will also be using current US average electricity cost to estimate the payback period.
+The model will focus on estimating yearly energy generation for a solar panel installation in the US. Specifically a Monocrystalline Silicon (c-Si), single axis tracking, ground mount, flat ground, solar panel. I will also be using current US average electricity cost to estimate the payback period.
 
 ## Data sources
 * OpenWeatherMap API - Historical weather data (temperature, cloud coverage etc)
@@ -29,7 +29,7 @@ The model will focus on estimating yearly energy generation for a solar panel in
 * Reverse Geocoding APIs - Provides data on if coordinates are in the US and on land
 * NREL PVDAQ - Solar energy generation from around the US (ground truth)
 
-## Data acquisition
+## Part 1: System selection
+In this section I will get the metadata of all the systems and then select which systems meet my desired criteria.
 
-
-## Exploratory data Analysis
+First I downloaded the metadata csv. Looking at the systems' metadata, 1498 were of type unknown and 1613 were fixed tracking systems out of 1621. This makes my original plan to used a tracking ground mount solar panel impossible, therefore I will be switching to using fixed systems. While this means I'll be using both ground and roof systems, I should be able to take account of the two main types anyway as the main difference is the tilt which is available in the metadata. Next I then filtered the data on: 5+ years of data; quality assurance test passed; fixed systems. I also did some initial data acquisition from the metadata file gathering: latitude, longitude, elevation, azimuth, and tilt.
