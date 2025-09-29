@@ -27,9 +27,21 @@ The model will focus on estimating yearly energy generation for a solar panel in
 * NREL National Solar Radiation Database - Historical solar irradiance data for the US
 * Open-Meteo Elevation API - Provides elevation data
 * Reverse Geocoding APIs - Provides data on if coordinates are in the US and on land
-* NREL PVDAQ - Solar energy generation from around the US (ground truth)
+* OpenEI NREL PVDAQ - Solar energy generation from around the US (ground truth)
+https://data.openei.org/s3_viewer?bucket=oedi-data-lake&limit=100&prefix=pvdaq%2Fcsv%2Fpvdata%2F
 
 ## Part 1: System selection
 In this section I will get the metadata of all the systems and then select which systems meet my desired criteria.
 
-First I downloaded the metadata csv. Looking at the systems' metadata, 1498 were of type unknown and 1613 were fixed tracking systems out of 1621. This makes my original plan to used a tracking ground mount solar panel impossible, therefore I will be switching to using fixed systems. While this means I'll be using both ground and roof systems, I should be able to take account of the two main types anyway as the main difference is the tilt which is available in the metadata. Next I then filtered the data on: 5+ years of data; quality assurance test passed; fixed systems. I also did some initial data acquisition from the metadata file gathering: latitude, longitude, elevation, azimuth, and tilt.
+* Initial EDA: First I downloaded the metadata csv. Looking at the systems' metadata, 1498 were of type unknown and 1613 were fixed tracking systems out of 1621.
+* Decision to pivot: This makes my original plan to used a tracking ground mount solar panel impossible, therefore I will be switching to using fixed systems. While this means I'll be using both ground and roof systems, I should be able to take account of the two main types anyway as the main difference is the tilt which is available in the metadata. 
+* Final selection: Next I then filtered the data on: 5+ years of data; quality assurance test passed; fixed systems. I also did some initial data acquisition from the metadata file gathering: latitude, longitude, elevation, azimuth, and tilt.
+
+## Part 2: Label data preprocessing
+In this section I will be gathering the raw solar generation data, and calculating the performance ratio which will be the ground truth for my model.
+
+* Initial EDA: Firstly I looked at a how the data was stored on the OpenEI PVDAQ. There wasn't a clear way of structuring the data, some sites has multiple csv files per year, some only 1. There was also no clear naming convention for the files and some files for a single year had insufficient data.
+* Defining the structure: I decided to only collect data that: has 1 csv file per year, has 350+ days of data per csv, had at least 5+ years of data.
+* Gathering and processing the data: I downloaded the needed data according to the set structure and stored it in the raw data file. After which I calculated the mean power generation for each system and used the generation capacity to get the performance ratio.
+
+
