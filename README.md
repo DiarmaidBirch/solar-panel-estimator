@@ -30,6 +30,9 @@ The model will focus on estimating yearly energy generation for a solar panel in
 * OpenEI NREL PVDAQ - Solar energy generation from around the US (ground truth)
 https://data.openei.org/s3_viewer?bucket=oedi-data-lake&limit=100&prefix=pvdaq%2Fcsv%2Fpvdata%2F
 
+* OpenEI NREL PVDAQ - Solar energy generation from around the US (ground truth)
+* NASA Prediction of Worldwide Energy Resource (POWER)
+
 ## Part 1: System selection
 In this section I will get the metadata of all the systems and then select which systems meet my desired criteria.
 
@@ -44,4 +47,9 @@ In this section I will be gathering the raw solar generation data, and calculati
 * Defining the structure: I decided to only collect data that: has 1 csv file per year, has 350+ days of data per csv, had at least 5+ years of data.
 * Gathering and processing the data: I downloaded the needed data according to the set structure and stored it in the raw data file. After which I calculated the mean power generation for each system and used the generation capacity to get the performance ratio.
 
+## Part 3: Feature data preprocessing
+For the 3rd section I'll be gathering and calculating data on the climate of each system such as the mean solar irradiance.
 
+* Initial EDS: First I looked at how data was stored on the NASA POWER. I was able to input a coordinate and get all climate data I needed for a system at that coordinate.
+* Data gathering: I then did this process for each system and downloaded data on each climate variable for 2019.
+* Data preprocessing: Afterwards I looked through the downloaded data for each system and calculated the mean of each climate variable I needed.
