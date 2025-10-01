@@ -53,3 +53,15 @@ For the 3rd section I'll be gathering and calculating data on the climate of eac
 * Initial EDS: First I looked at how data was stored on the NASA POWER. I was able to input a coordinate and get all climate data I needed for a system at that coordinate.
 * Data gathering: I then did this process for each system and downloaded data on each climate variable for 2019.
 * Data preprocessing: Afterwards I looked through the downloaded data for each system and calculated the mean of each climate variable I needed.
+
+## Part 4: Data partitioning 
+Next before I train the model I'm going to split up the data
+
+* Data splitting methodology : I decided to use simple random sampling to split the data, in ratios of: 60% training, 20% validation, 20% testing.
+
+## Part 5: Model training
+In the 5th part I'm training the model and deciding what degree to use for my regression model.
+
+* Training the model: I used the training data to train the model for polynomial regression from degree 1-5 using a sklearn pipeline.
+* Tuning hyperparameters: I then ran this model against the validation set to get the RMSE for each degree.
+* Selecting final the model: I found that a degree 1 had the lowest RMSE so i decided to use a linear regression model.
