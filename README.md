@@ -65,3 +65,10 @@ In the 5th part I'm training the model and deciding what degree to use for my re
 * Training the model: I used the training data to train the model for polynomial regression from degree 1-5 using a sklearn pipeline.
 * Tuning hyperparameters: I then ran this model against the validation set to get the RMSE for each degree.
 * Selecting final the model: I found that a degree 1 had the lowest RMSE so i decided to use a linear regression model.
+
+## Part 6: Model testing and evaluation
+For the final part I'm testing the model on the test data and evaluating its performance.
+
+* Testing the model: First I ran the model on the test data getting a RMSE of 0.055 and a r^2 value of 0.37.
+* Visualising the results: I plotted a series of graphs to compare predicted outcomes and actual outcomes to find where my model could've improved.
+* Testing a hypothesis: Looking at the data it looked like the bigger an outlier the true performance ratio was from the mean the worse my model was at predicting it's true output. I confirmed this by finding the covariance between the two variables which turned out to be 0.58.
