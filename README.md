@@ -23,13 +23,6 @@ In the green transition ensuring that solar energy is deployed efficiently is im
 The model will focus on estimating yearly energy generation for a solar panel installation in the US. Specifically a Monocrystalline Silicon (c-Si), single axis tracking, ground mount, flat ground, solar panel. I will also be using current US average electricity cost to estimate the payback period.
 
 ## Data sources
-* OpenWeatherMap API - Historical weather data (temperature, cloud coverage etc)
-* NREL National Solar Radiation Database - Historical solar irradiance data for the US
-* Open-Meteo Elevation API - Provides elevation data
-* Reverse Geocoding APIs - Provides data on if coordinates are in the US and on land
-* OpenEI NREL PVDAQ - Solar energy generation from around the US (ground truth)
-https://data.openei.org/s3_viewer?bucket=oedi-data-lake&limit=100&prefix=pvdaq%2Fcsv%2Fpvdata%2F
-
 * OpenEI NREL PVDAQ - Solar energy generation from around the US (ground truth)
 * NASA Prediction of Worldwide Energy Resource (POWER)
 
@@ -69,6 +62,9 @@ In the 5th part I'm training the model and deciding what degree to use for my re
 ## Part 6: Model testing and evaluation
 For the final part I'm testing the model on the test data and evaluating its performance.
 
-* Testing the model: First I ran the model on the test data getting a RMSE of 0.055 and a r^2 value of 0.37.
+* Testing the model: First I ran the model on the test data getting a RMSE of 0.055 and a r^2 value of 0.52.
 * Visualising the results: I plotted a series of graphs to compare predicted outcomes and actual outcomes to find where my model could've improved.
 * Testing a hypothesis: Looking at the data it looked like the bigger an outlier the true performance ratio was from the mean the worse my model was at predicting it's true output. I confirmed this by finding the covariance between the two variables which turned out to be 0.58.
+
+## Conclusion
+My model can be seen as a partial success, while it is able to find some pattern between the variables and solar performance ratio an improvement can still be made. This could be done by gathering more data however I am limited in how many solar systems i could get data for. Instead more closely looking at data on a day by day basis instead of looking at year average patterns may improve results. However this would require significant computation to train the model on a daily data.
