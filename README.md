@@ -9,7 +9,6 @@ In the green transition ensuring that solar energy is deployed efficiently is im
 
 ## Project Objectives
 * Develop a regression model capable of predicting average yearly solar panel energy generation.
-* Develop a GUI for users to interpret what the data means, such as estimating the payback period.
 * Create a database integrating diverse data to train the model including geographical coordinates, historic weather, and solar radiation data.
 * Evaluate model performance using (spatial cross-validation?) on unseen data.
 
@@ -62,9 +61,17 @@ In the 5th part I'm training the model and deciding what degree to use for my re
 ## Part 6: Model testing and evaluation
 For the final part I'm testing the model on the test data and evaluating its performance.
 
-* Testing the model: First I ran the model on the test data getting a RMSE of 0.055 and a r^2 value of 0.52.
+* Testing the model: First I ran the model on the test data getting a RMSE of 0.055 and a r^2 value of 0.37.
 * Visualising the results: I plotted a series of graphs to compare predicted outcomes and actual outcomes to find where my model could've improved.
 * Testing a hypothesis: Looking at the data it looked like the bigger an outlier the true performance ratio was from the mean the worse my model was at predicting it's true output. I confirmed this by finding the covariance between the two variables which turned out to be 0.58.
 
+## Part 7: Model refinement
+To improve my model I needed more data, however I was already using all the systems I could therefore I needed to change my methods
+
+* Decision to pivot: I decided to switch my model so it would take data on a day basis instead of taking in average data for a whole year.
+* Changes to data gathering: Previously I only had weather data for 2019 which meant there were some days I didn't have data for. I went back and changed part 3 so this was fixed.
+* Integrating data: I then took 10 days for each system and integrated the data the model needs for that day. This resulted in alot of data so I stopped at 10.
+* Running the model: I then ran the model on this finding a best degree of 3 and a r2 of 0.62.
+
 ## Conclusion
-My model can be seen as a partial success, while it is able to find some pattern between the variables and solar performance ratio an improvement can still be made. This could be done by gathering more data however I am limited in how many solar systems i could get data for. Instead more closely looking at data on a day by day basis instead of looking at year average patterns may improve results. However this would require significant computation to train the model on a daily data.
+My model can be seen as a partial success, while it is able to find some pattern between the variables and solar performance ratio an improvement can still be made. With my refinement in part 7 it's likely the amount of data is no longer a limiting factor and instead my model isn't complex enough.
